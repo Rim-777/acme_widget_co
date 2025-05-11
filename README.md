@@ -1,23 +1,24 @@
-## Simple Basket Calculator 
+## Simple Basket Calculator
 Ruby application with RSpec
+
 ### Dependencies:
 - Ruby 3.3.0
 
 ### Installation:
-- Clone poject
+- Clone project
 - Run bundler:
 
- ```shell
- $ bundle install
- ```
-
-##### Tests:
+```bundle install```
+### Tests:
 To execute automation tests, run following commands:
 
-```shell
- $ bundle exec rspec
-```
+```bundle exec rspec```
 
-### License
+### Docker usage
 
-The software is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+You can run tests in Docker without installing Ruby or dependencies locally:
+
+```docker-compose build```
+```docker-compose up```
+
+This will build the image and run all RSpec tests inside the container.
