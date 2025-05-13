@@ -4,17 +4,17 @@ require 'spec_helper'
 
 RSpec.describe AcmeVidgetCo::ProductCatalog do
   let(:products) do
-    {
-      'R01' => { name: 'Red Widget', price: 32.95 },
-      'G01' => { name: 'Green Widget', price: 24.95 }
-    }
+    [
+      AcmeVidgetCo::Product.new(code: 'R01', name: 'Red Widget', price: 32.95),
+      AcmeVidgetCo::Product.new(code: 'G01', name: 'Green Widgett', price: 24.95)
+    ]
   end
 
   let(:catalog) { described_class.new(products) }
 
   describe '#product' do
     it 'returns the product hash for a valid code' do
-      expect(catalog.product('R01')).to eq(products['R01'])
+      expect(catalog.product('R01')).to eq(products.first)
     end
 
     it 'returns nil for an unknown code' do
@@ -24,7 +24,7 @@ RSpec.describe AcmeVidgetCo::ProductCatalog do
 
   describe '#price' do
     it 'returns the price for a valid code' do
-      expect(catalog.price('G01')).to eq(products['G01'].fetch(:price))
+      expect(catalog.price('G01')).to eq(products.last.price)
       expect(catalog.price('G01')).to be_a(BigDecimal)
     end
 
@@ -35,7 +35,7 @@ RSpec.describe AcmeVidgetCo::ProductCatalog do
 
   describe '#name' do
     it 'returns the name for a valid code' do
-      expect(catalog.name('R01')).to eq(products['R01'].fetch(:name))
+      expect(catalog.name('R01')).to eq(products.first.name)
     end
 
     it 'raises NoMethodError for an unknown code' do

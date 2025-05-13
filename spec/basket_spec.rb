@@ -4,11 +4,11 @@ require 'spec_helper'
 
 RSpec.describe AcmeVidgetCo::Basket do
   let(:products) do
-    {
-      'R01' => { name: 'Red Widget', price: 32.95 },
-      'G01' => { name: 'Green Widget', price: 24.95 },
-      'B01' => { name: 'Blue Widget', price: 7.95 }
-    }
+    [
+      AcmeVidgetCo::Product.new(code: 'R01', name: 'Red Widget', price: 32.95),
+      AcmeVidgetCo::Product.new(code: 'G01', name: 'Green Widgett', price: 24.95),
+      AcmeVidgetCo::Product.new(code: 'B01', name: 'Blue Widget', price: 7.95)
+    ]
   end
 
   let(:product_catalog) { AcmeVidgetCo::ProductCatalog.new(products) }

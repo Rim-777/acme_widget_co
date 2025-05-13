@@ -8,15 +8,15 @@ module AcmeVidgetCo
     end
 
     def product(code)
-      @products[code]
+      @products.find { |product| product.code == code }
     end
 
     def price(code)
-      product(code)[:price].to_d
+      product(code).price.to_d
     end
 
     def name(code)
-      product(code)[:name]
+      product(code).name
     end
   end
 end
